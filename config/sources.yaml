@@ -1,0 +1,42 @@
+# Data source configuration for fine-tuning
+# Update these paths to point to your personal data
+
+sources:
+  emails:
+    enabled: false
+    path: ./data/raw/emails
+    format: "mbox"  # or "csv", "json"
+    description: "Email messages for training"
+
+  messages:
+    enabled: false
+    path: ./data/raw/messages
+    format: "json"  # or "csv", "txt"
+    description: "Text messages for training"
+
+  writings:
+    enabled: false
+    path: ./data/raw/writings
+    format: "txt"  # or "md", "docx"
+    description: "Personal writings, journals, notes"
+
+  documents:
+    enabled: false
+    path: ./data/raw/documents
+    format: "pdf"  # or "txt", "docx"
+    description: "Documents and other text files"
+
+processing:
+  min_length: 50  # Minimum characters per document
+  max_length: 2048  # Maximum characters per document
+  remove_duplicates: true
+  remove_urls: true
+  remove_emails: false
+  normalize_whitespace: true
+
+output:
+  processed_data: ./data/processed
+  train_split: 0.8
+  val_split: 0.1
+  test_split: 0.1
+  format: "jsonl"  # JSONL format for model training
